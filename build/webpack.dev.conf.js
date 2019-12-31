@@ -14,11 +14,11 @@ const config = merge(base, {
   devServer: {
     clientLogLevel: 'warning',
     hot: true,
-    contentBase: false, 
+    contentBase: path.join(__dirname, '../'), 
     compress: true,
-    host: '0.0.0.0',
+    host: '127.0.0.1',
     port: 8082,
-    useLocalIp: true,
+    useLocalIp: false,
     open: true,
     overlay: { 
         warnings: false, 
