@@ -52,6 +52,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^1.5.1",
     "antd": "^3.25.3",
     "classnames": "^2.2.6",
     "deeplearn": "0.3.11",

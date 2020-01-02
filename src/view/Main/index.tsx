@@ -4,6 +4,8 @@ import { Button, Select } from 'antd';
 import { CommonProps } from '../../interface';
 import classnames from 'classnames';
 import { DEFAULT_STYLES_OPTIONS } from '../../config';
+import InputImage from './input-image';
+import StyleImage from './style-image';
 
 const { Option } = Select;
 
@@ -17,19 +19,13 @@ export interface MainProps extends CommonProps{
 
 export default class PictureArtUp extends React.Component<MainProps>{
 
-  changeStyle = (val) => {
-    const { className, style, controller } = this.props;
-    controller.currentStyle = val;
-    this.forceUpdate();
-  }
+  
 
   convert = () => {
     const {controller} = this.props;
-    controller.start().then(() => {
+    controller.startStyling1().then(() => {
       this.forceUpdate();
     })
-
-
   }
 
   componentDidMount() {
@@ -46,51 +42,15 @@ export default class PictureArtUp extends React.Component<MainProps>{
   render() {
     const { className, style, controller } = this.props;
 
-    const base64 = controller.contentImgBase64;
-
-    const { currentStyle } = controller;
-
-    const target = DEFAULT_STYLES_OPTIONS.find(item => item.value === currentStyle);
-
-    let styleThumb;
-    if (target && target.thumbnail) {
-      styleThumb = target.thumbnail;
-    }
-
+    
     return (
       <div className={classnames([styles.main, className])} style={style}>
         <div className={styles.content}>
           <div className={styles.block}>
-            <div className={styles.imgContainer}>
-              {
-                base64? (
-                  <img src={base64}/>
-                ): null
-              }
-            </div>
+            <InputImage  controller={controller}/>
           </div>
           <div className={styles.block}>
-            <Select 
-              value={currentStyle} 
-              placeholder="请选择风格" 
-              onChange={this.changeStyle}
-              style={{width: '100%', marginBottom: 20}}
-            >
-              {
-                DEFAULT_STYLES_OPTIONS.map((item: any) => (
-                <Option key={item.value} value={item.value}>{item.name}</Option>
-                ))
-              }
-
-            </Select>
-            <div className={classnames([styles.imgContainer, styles.stylePart]) }>
-              {
-                styleThumb? (
-                  <img src={styleThumb}/>
-                ): null
-              }
-            </div>
-
+            <StyleImage controller={controller} />
           </div>
           <div className={styles.block}>
             <div ref="workspace" className={styles.imgContainer}/>

@@ -3,7 +3,39 @@ export const BASE_URL = '//127.0.0.1:8082';
 
 export const BASE_THUMB_URL = `${BASE_URL}/assets/style/deeplearn`;
 
-export const BASE_CKPTS_URL = `${BASE_URL}/ckpts`;
+export const CDN_URL = '//dev.g.alicdn.com/youku_operation_fe/sucai-center-fe/0.0.0';
+
+export const BASE_CKPTS_URL = `${CDN_URL}/ckpts`;
+
+
+export const TF_MODEL_BASE_URL = `${BASE_URL}/tf_models`;
+
+
+export const TF_MODELS = Object.freeze({
+  mobileStyleNet: {
+    name: 'mobileStyleNet',
+    title: '[Fast] Distilled MobileNet style model (9.6MB)',
+    modelUrl: `${TF_MODEL_BASE_URL}/model_style_js/model.json`,
+  },
+  inceptionStyleNet: {
+    name: 'inceptionStyleNet',
+    title: '[High quality] Original Inceptionv3 style model (36.3MB)',
+    modelUrl: `${TF_MODEL_BASE_URL}/model_style_inception_js/model.json`,
+  },
+  originalTransformNet: {
+    name: 'originalTransformNet',
+    title: '[High quality] Original transformer model (7.9MB)',
+    modelUrl: `${TF_MODEL_BASE_URL}/model_transformer_js/model.json`,
+  },
+  separableTransformNet: {
+    name: 'separableTransformNet',
+    title: '[Fast] Separable_conv2d transformer (2.4MB)',
+    modelUrl: `${TF_MODEL_BASE_URL}/model_transformer_separable_js/model.json`,
+  }
+});
+
+
+
 
 
 
