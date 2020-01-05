@@ -5,7 +5,7 @@ import { Spin } from 'antd';
 import Header from './Header';
 import Main from './Main';
 import classnames from 'classnames';
-import Controller from '../controller/controller';
+import Controller from '../controller/deeplearn/controller';
 
 
 

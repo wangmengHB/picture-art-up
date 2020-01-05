@@ -3,12 +3,14 @@ import styles from './index.module.less';
 import { Button, Select } from 'antd';
 import { CommonProps } from '../../interface';
 import classnames from 'classnames';
+import { DEFAULT_STYLES_OPTIONS } from '../../config';
 
+console.log('options', DEFAULT_STYLES_OPTIONS);
 
+const { Option } = Select;
 
 export interface StyleImageProps extends CommonProps {
   controller: any;
-
 }
 
 
@@ -27,22 +29,38 @@ export default class StyleImage extends React.Component<StyleImageProps>{
     reader.readAsDataURL(e.target.files[0]);
   };
 
+  changeStyle = (val) => {
+    const { controller } = this.props;
+    controller.currentStyle = val;
+    this.forceUpdate();
+  }
+
+
   render() {
     const { controller } = this.props;
-    const base64 = controller.styleImageBase64;
+    const { currentStyle } = controller;
+    const target = DEFAULT_STYLES_OPTIONS.find(item => item.value === currentStyle );
 
+    
 
     return (
       <div className={styles.inputImage}>
+        <Select style={{width: '100%', marginBottom: 20}} value={currentStyle} onChange={this.changeStyle}>
+          {
+            DEFAULT_STYLES_OPTIONS.map((opt: any) => {
+              return (
+                <Option key={opt.value} value={opt.value}>{opt.name}</Option>
+              );
+            })
+          }
+        </Select>
+
         <div className={styles.imgContainer}>
           {
-            base64 && (<img src={base64} />)
+            target && (<img src={target.thumbnail} />)
           }
         </div>
-        <div>
-          <input ref="file" className={styles.file} type="file" accept="image" onChange={this.loadLocalImage}/> 
-          <Button type="primary" onClick={() => (this.refs.file as any).click()}>加载本地图片</Button>
-        </div>
+        
 
       </div>
     )

@@ -21,8 +21,6 @@ export default class Controller {
   private transformNet: TransformNet;
 
 
-  
-
   private canvas: HTMLCanvasElement;
 
   // current image
@@ -41,9 +39,11 @@ export default class Controller {
     this.gpgpu = new GPGPUContext(this.gl);
     this.math = new NDArrayMathGPU(this.gpgpu);
     this.transformNet = new TransformNet(this.math, '');
+
+    (window as any)._ctrl = this;
   }
 
-  addImage({ base64}) {
+  setSourceImage({ base64}) {
     this.contentImgElement = new Image();
     this.contentImgElement.src = base64;
     this.contentImgBase64 = base64;
@@ -84,14 +84,6 @@ export default class Controller {
   private setCanvasShape(shape: number[]) {
     this.canvas.width = shape[1];
     this.canvas.height = shape[0];
-    // if (shape[1] > shape[0]) {
-    //   this.canvas.style.width = '500px';
-    //   this.canvas.style.height = (shape[0]/shape[1]*500).toString() + 'px';
-    // }
-    // else {
-    //   this.canvas.style.height = '500px';
-    //   this.canvas.style.width = (shape[1]/shape[0]*500).toString() + 'px';
-    // }
   }
 }
 

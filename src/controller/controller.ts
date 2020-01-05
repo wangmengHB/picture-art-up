@@ -41,8 +41,6 @@ export default class Controller {
   // 
   public styleRatio: number = 1.0;
 
-
-
   public currentStyle: any;
 
   public loading = false;
@@ -96,19 +94,7 @@ export default class Controller {
 
 
   @async()
-  async startStyling() {
-    await tf.nextFrame();
-    console.log('Generating 100D style representation');
-    await tf.nextFrame();
-    let bottleneck = await tf.tidy(() => {
-      return this.styleNet.predict(tf.browser.fromPixels(this.styleImg).toFloat().div(tf.scalar(255)).expandDims())
-    })
-
-  }
-
-
-  @async()
-  async startStyling1() {
+  async start() {
     await tf.nextFrame();
     console.log('Generating 100D style representation');
     await tf.nextFrame();

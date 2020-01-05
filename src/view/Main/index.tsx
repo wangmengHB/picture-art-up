@@ -23,7 +23,7 @@ export default class PictureArtUp extends React.Component<MainProps>{
 
   convert = () => {
     const {controller} = this.props;
-    controller.startStyling1().then(() => {
+    controller.start().then(() => {
       this.forceUpdate();
     })
   }
