@@ -5,7 +5,7 @@ export const BASE_THUMB_URL = `${BASE_URL}/assets/style/deeplearn`;
 
 export const CDN_URL = '//dev.g.alicdn.com/youku_operation_fe/sucai-center-fe/0.0.0';
 
-export const BASE_CKPTS_URL = `${CDN_URL}/ckpts`;
+export const BASE_CKPTS_URL = `${BASE_URL}/ckpts`;
 
 
 export const TF_MODEL_BASE_URL = `${BASE_URL}/tf_models`;

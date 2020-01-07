@@ -77,6 +77,7 @@ export default class Controller {
         renderShader,
         inferenceResult.getTexture()
       );
+      (window as any)._a = this.canvas.toDataURL();
     });
 
   }

@@ -3,14 +3,14 @@ import styles from './index.module.less';
 import { Button, Select } from 'antd';
 import { CommonProps } from '../../interface';
 import classnames from 'classnames';
-import { DEFAULT_STYLES_OPTIONS } from '../../config';
+
 import InputImage from './input-image';
 import StyleImage from './style-image';
 
 const { Option } = Select;
 
 
-console.log('options', DEFAULT_STYLES_OPTIONS);
+
 
 export interface MainProps extends CommonProps{
   controller: any;
